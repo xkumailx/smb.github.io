@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Canvas Redux</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		body{margin: 0; padding: 0;}
+
+		.body-container{width: 100%;height: 100vh; display: flex; flex-wrap: wrap; align-items: center; position: relative; z-index: 1; background: url('assets/images/web-bg.jpg') no-repeat bottom center; background-size: cover;}
+		.body-container::before{content: ""; position: absolute; background: rgba(255,255,255,0.5); z-index: 2; width: 100%; height: 100%;}
+		.container{max-width: 1700px; width: 100%; margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; position: relative; z-index: 6;}
+		.inner-container{max-width: 1400px; width: 100%; margin-left: auto; margin-right: auto; position: relative; z-index: 6;}
+		.inner-container .flex-row .mxx p{color: #000; font-size: 1.05em; margin-top: 0.9375em; font-family: Arial, Helvetica, sans-serif; font-weight: 400; margin-bottom: 0.5em;}
+		.inner-container .flex-row .mxx p b{color: #004481;}
+		body .flex-row{display: flex; flex-direction: row; flex-wrap: wrap;}
+		body .flex-row .col-1{flex: 0 0 8.34%; width: 8.34%;}
+		body .flex-row .col-2{flex: 0 0 16.67%; width: 16.67%;}
+		body .flex-row .col-2-5{flex: 0 0 20%; width: 20%;}
+		body .flex-row .col-3{flex: 0 0 25%; width: 25%;}
+		body .flex-row .col-4{flex: 0 0 33.33%; width: 33.33%;}
+		body .flex-row .col-5{flex: 0 0 41.66%; width: 41.66%;}
+		body .flex-row .col-6{flex: 0 0 50%; width: 50%;}
+		body .flex-row .col-7{flex: 0 0 58.33%; width: 58.33%;}
+		body .flex-row .col-8{flex: 0 0 66.66%; width: 66.66%;}
+		body .flex-row .col-9{flex: 0 0 75%; width: 75%;}
+		body .flex-row .col-10{flex: 0 0 83.33%; width: 83.33%;}
+		body .flex-row .col-11{flex: 0 0 91.66%; width: 91.66%;}
+		body .flex-row .col-12{flex: 0 0 100%; width: 100%;}
+
+		.text-center{text-align: center !important;}
+		.logo-content{display: block; margin-bottom: 2em;}
+		.logo-content h2{color: #004481; font-size: 2.500em; margin-top: 0.75em; font-family:Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 0;}
+		.logo-content img{max-width: 70%; height: auto;}
+		.contactd{margin: 0 0 20px; display: block;}
+		.contactd p{color: #303030; font-size: 1.500em; font-family:Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 15px; margin-top: 0;}
+		.contactd a{color: #000; font-size: 1.250em; text-decoration: none; font-family:Arial, Helvetica, sans-serif; font-weight: 600;}
+		.contactd a:hover{text-decoration: underline;}
+		.comp-details h3{color: #000; font-size: 2em; margin-top: 0.9375em; font-family:Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 0;}
+		.contact-heading{color: #000; font-size: 2em; margin-top: 0.9375em; font-family:Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 0.5em;}
+		.comp-details p{color: #ea262b; font-size: 1.5em; margin-top: 20px; font-family:Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 0;}
+		.comp-details ul{margin: 1em 0 3em; padding: 0; display: flex; flex-wrap: wrap; flex-direction: row; justify-content: center; align-items: center;}
+		.comp-details ul li{color: #000; font-size: 1.250em; font-family: Arial, Helvetica, sans-serif; font-weight: 600; margin-bottom: 0; flex: 0 0 33%; list-style: none;}
+		.footer{position: absolute;bottom: 0; width: 100%; background-color: #00a656	; z-index: 6; padding: 5px 0; display: flex;}
+		.footer p{text-align: right; font-size: 0.875em; font-family: Arial, Helvetica, sans-serif; font-weight: 400; margin: 0; color: #fff;}
+		.footer p a{font-size: inherit; font-family: Arial, Helvetica, sans-serif; font-weight: 400; margin: 0; color: #fff; text-decoration: none;}
+		.footer p a:hover{text-decoration: underline;}
+		.contactd a{margin-right: 15px;}
+		.container .inner-container .mxx{width: 70%;margin: auto;}
+
+		@media only screen and (min-width:1801px) and (max-width:1900px){
+			body{ font-size: 16px; }
+			body .container{ max-width: 1700px !important; }
+			body .inner-container{ max-width: 1400px !important; }
+
+		}
+
+		@media only screen and (min-width:1701px) and (max-width:1800px){
+			body{ font-size: 16px; }
+			body .container{ max-width: 1600px !important; }
+			body .inner-container{ max-width: 1300px !important; }
+
+		}
+
+		@media only screen and (min-width:1601px) and (max-width:1700px){
+			body{ font-size: 15px; }
+			body .container{ max-width: 1500px !important; }
+			body .inner-container{ max-width: 1200px !important; }
+
+		}
+
+		@media only screen and (min-width:1501px) and (max-width:1600px){
+			body{ font-size: 15px; }
+			body .container{ max-width: 1400px !important; }
+			body .inner-container{ max-width: 1200px !important; }
+
+		}
+
+		@media only screen and (min-width:1401px) and (max-width:1500px){
+			body{ font-size: 15px; }
+			body .container{ max-width: 1300px !important; }
+			body .inner-container{ max-width: 1200px !important; }
+
+		}
+
+		@media only screen and (min-width:1301px) and (max-width:1400px){
+			body{ font-size: 14px; }
+			body .container{ max-width: 1200px !important; }
+			body .inner-container{ max-width: 1200px !important; }
+
+		}
+
+		@media only screen and (min-width:1201px) and (max-width:1300px){
+			body{ font-size: 14px; }
+			body .container{ max-width: 1170px !important; }
+			body .inner-container{ max-width: 1170px !important; }
+
+		}
+
+		@media only screen and (min-width: 1001px) and (max-width: 1200px){
+			body{ font-size: 12px; }
+			body .container{ max-width: 950px !important; }
+			body .inner-container{ max-width: 950px !important; }
+		}
+
+		@media only screen and (min-width: 768px) and (max-width: 1000px){
+			body{ font-size: 12px; overflow-x: hidden; }
+			body .container{ max-width: initial !important; }
+			body .inner-container{ max-width: initial !important; }
+			.comp-details ul li{padding: 0 0 0.9375em;}
+			.body-container .footer p{text-align: center;}
+		}
+
+		@media (max-width: 767px){
+			body{ font-size: 12px; overflow-x: hidden; }
+			body .container{ max-width: initial !important; }
+			body .inner-container{ max-width: initial !important; }
+			body .flex-row{flex-direction: column;}
+			body .flex-row .col-4{flex: 0 0 100%; width: 100%;}
+			.comp-details ul li{flex: 0 0 100%; padding: 0 0 0.9375em;}
+			.logo-content{margin: 1em 0;}
+			.logo-content h2{font-size: 2em; margin-top: 15px;}
+			.comp-details h3{margin-top: 10px;}
+			.comp-details ul{margin: 1em 0;}
+			.body-container .footer p{text-align: center;}
+			.footer{position: relative;}
+			.body-container{height: auto;}
+			.container .inner-container .mxx{width: 100%;}
+		}
+
+		@media only screen and (min-width: 560px) and (max-width: 767px){
+
+		}
+	</style>
+
+</head>
+<body>
+	<div class="body-container">
+		<div class="container">
+			<div class="flex-row">
+				<div class="col-4"></div>
+				<div class="col-4">
+					<div class="logo-content text-center">
+						<img class="img-fluid text-center" alt="Misaal By Ayesha Somaya" src="assets/images/logo.png">
+						<h2 class="text-center">S.M.B TRADERS</h2>
+					</div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+			<!-- <div class="inner-container">
+				<div class="flex-row">
+					<div class="col-12">
+						<div class="text-center comp-details">
+							<h3 class="text-center">What We Offer</h3>
+							<ul>
+							    <li>Ready to Wear Luxury Basics</li>
+							    <li>Online Store</li>
+							    <li>Delivering Worldwide</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			<div class="inner-container">
+				<div class="flex-row">
+					<div class=" mxx">
+				        <p class="text-center company-des"><b>Dealers Stockist & Supplier of : </b>Hardware, Tools, G.I., M.S., S.S. Copper & Brass Sheet, Coils, Pipe Fittings, Valves, Flanges, Welding Materials, Safety Equipments, Paint Products, & <b>General Order Supplier</b></p>
+						<p class="spe-in text-center"><b>Specialist in: Electrical Items</b></p> 
+				    </div>
+				    <div class="col-12">
+				        <h3 class="text-center contact-heading">Get In Touch</h3>
+				    </div>
+					<div class="col-4">
+						<div class="cphone text-center contactd">
+							<p><i class="fa-solid fa-phone"></i> Call Us</p>
+							<a href="tel:021-32464439">021-32464439</a>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="caddress text-center contactd">
+							<p><i class="fa-solid fa-map-location-dot"></i> Reach Us</p>
+							<a href="https://maps.app.goo.gl/xBD1oDuWwgywfjYD7" target="_blank"> 212 industrial town plaza opposite SM. Science college shahrah e liaquat karachi</a>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="cemail text-center contactd">
+							<p><i class="fa-solid fa-envelope"></i> Email Us</p>
+							<a href="mailto:smb.traders@yahoo.com">smb.traders@yahoo.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+            <div class="container">
+                <div class="flex-row">
+                    <div class="col-12">
+                        <p>Website by <a href="https://bohradevelopers.com" target="_blank">BD</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>
